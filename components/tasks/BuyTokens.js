@@ -31,7 +31,7 @@ const BuyTokens = () => {
       args: [address],
     });
     // console.log(data.toString())
-    setWTKBal(data.toString());
+    setWTKBal((data / 10 ** 18).toFixed(2));
   };
 
   const getPrice = async () => {
