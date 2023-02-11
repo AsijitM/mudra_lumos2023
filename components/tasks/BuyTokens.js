@@ -1,12 +1,64 @@
-import React, { useContext, useState, useEffect } from "react";
-import AvailableTokens from "../AvailableTokens";
-import { Divider, Input } from "antd";
+import React, { useContext, useState, useEffect } from 'react';
+import AvailableTokens from '../AvailableTokens';
+import { Divider, Input } from 'antd';
 // import Button from "../Button";
+import { readContract } from '@wagmi/core';
+import { getAccount } from '@wagmi/core';
+
+import {
+  converterABI,
+  converterAddress,
+  mudraABI,
+  mudraAddress,
+  vendorAddress,
+  vendorABI,
+} from '@/constants';
+import { prepareWriteContract, writeContract } from '@wagmi/core';
+import { ethers } from 'ethers';
 
 const BuyTokens = () => {
   const [tokens, setTokens] = useState();
 
   const [wtkBal, setWTKBal] = useState(0);
+  const [wtkPrice, setWTKPrice] = useState(0);
+
+  const { address } = getAccount();
+  const getBalance = async () => {
+    const data = await readContract({
+      address: mudraAddress,
+      abi: mudraABI,
+      functionName: 'balanceOf',
+      args: [address],
+    });
+    // console.log(data.toString())
+    setWTKBal(data.toString());
+  };
+
+  const getPrice = async () => {
+    const data = await readContract({
+      address: converterAddress,
+      abi: converterABI,
+      functionName: 'getLatestPrice',
+      // args: [BigNumber.from(1)],
+    });
+    setWTKPrice(Number(data) / 10 ** 18);
+  };
+  useEffect(() => {
+    getBalance();
+    getPrice();
+  }, []);
+
+  const mint = async (value) => {
+    const config = await prepareWriteContract({
+      address: vendorAddress,
+      abi: vendorABI,
+      functionName: 'mint',
+      overrides: {
+        value: ethers.utils.parseEther(value.toString()),
+      },
+    });
+    const data = await writeContract(config);
+  };
 
   return (
     <div className="w-screen">
@@ -46,20 +98,27 @@ const BuyTokens = () => {
             value={tokens}
             type="number"
             style={{
-              height: "3rem",
-              border: "2px solid black",
-              fontSize: "1rem",
-              backgroundColor: "#CFB0FF",
-              backgroundOpacity: "0.2",
+              height: '3rem',
+              border: '2px solid black',
+              fontSize: '1rem',
+              backgroundColor: '#CFB0FF',
+              backgroundOpacity: '0.2',
             }}
           />
           <p className="text-center mt-5 font-semibold flex justify-evenly px-10 text-2xl">
-            <span>{tokens || 1} $MUD</span> <span>=</span>{" "}
-            <span>{tokens ? (tokens * 1.2).toFixed(3) : 1} USD</span>
+            <span>{tokens || 1} $MUD</span> <span>=</span>{' '}
+            <span>
+              {tokens ? (tokens * wtkPrice).toFixed(3) : wtkPrice} USD
+            </span>
           </p>
 
           <div className="w-[12rem] mx-auto my-5">
-            {/* <Button text="Mint Now" /> */}
+            <button
+              className="bg-[#6200C5] px-4 py-2 text-white rounded-lg transition active:scale-75"
+              onClick={() => mint(tokens * wtkPrice)}
+            >
+              Mint Now
+            </button>
           </div>
         </div>
       </div>

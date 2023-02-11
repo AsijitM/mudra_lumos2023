@@ -1,4 +1,4 @@
-const mudra_abi = [
+export const mudraABI = [
   {
     inputs: [],
     stateMutability: 'nonpayable',
@@ -452,9 +452,9 @@ const mudra_abi = [
   },
 ];
 
-const mudra_addresses = "0x0bc580bc8efdab233310ef8b76a18db518ab48dc";
+export const mudraAddress = '0x0bc580bc8efdab233310ef8b76a18db518ab48dc';
 
-const converter = [
+export const converterABI = [
   {
     inputs: [],
     stateMutability: 'nonpayable',
@@ -507,10 +507,9 @@ const converter = [
   },
 ];
 
+export const converterAddress = '0xCCA1F13f25Afe14eec50b4387EA03562C1fC4faa';
 
-const converter_address = '0xCCA1F13f25Afe14eec50b4387EA03562C1fC4faa';
-
-const vendor = [
+export const vendorABI = [
   {
     inputs: [],
     name: 'mint',
@@ -603,4 +602,4 @@ const vendor = [
   },
 ];
 
-const vendor_address = '0x35c35Ab47816A9ae21e2813cb4588463283A6a41';
+export const vendorAddress = '0x35c35Ab47816A9ae21e2813cb4588463283A6a41';

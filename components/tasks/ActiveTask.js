@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 const ActiveTask = () => {
   return (
@@ -26,12 +26,12 @@ const TaskCard = () => {
         <h1 className="font-bold space-y-10">TASK NAME - COMMUNITY NAME</h1>
         <p className="w-2/3">
           LoremIpsum rmrfmri mfiefe rfeifef fififw i mifokfrofm
-          okfeorfmermermferferfmvm{" "}
+          okfeorfmermermferferfmvm{' '}
         </p>
       </div>
       <div className="flex flex-col items-end gap-5 text-right">
         <button className="border border-red-400 px-20 hover:bg-red-600 hover:border-black hover:text-white text-red-500 py-1 rounded-full">
-          STOP
+          CLAIM
         </button>
         <div className="flex space-x-5 justify-center items-center">
           <p className="flex items-center space-x-1">

@@ -1,11 +1,39 @@
 import { Input } from 'antd';
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import { readContract } from '@wagmi/core';
+import { getAccount } from '@wagmi/core';
+
+import {
+  converterABI,
+  converterAddress,
+  mudraABI,
+  mudraAddress,
+  vendorAddress,
+  vendorABI,
+} from '@/constants';
+import { prepareWriteContract, writeContract } from '@wagmi/core';
+import { ethers } from 'ethers';
 
 import AvailableTokens from '../AvailableTokens';
 
 const SetupTasks = ({ setActiveTabs }) => {
   const [wtkBal, setWTKBal] = useState(0);
+  const { address } = getAccount();
+  const getBalance = async () => {
+    const data = await readContract({
+      address: mudraAddress,
+      abi: mudraABI,
+      functionName: 'balanceOf',
+      args: [address],
+    });
+    // console.log(data.toString())
+    setWTKBal((data / 10 ** 18).toFixed(2));
+  };
 
+  useEffect(() => {
+    getBalance();
+    // getPrice();
+  }, []);
   return (
     <div className="w-screen">
       <div className="w-2/3 flex mx-auto m-10 rounded-lg border border-black p-10 bg-white">
