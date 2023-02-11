@@ -19,7 +19,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="h-[calc(100vh-71px)] flex flex-col items-center justify-center space-y-3 text-white">
-        {/* <img src="/cryptocurrency.png" alt="" /> */}
+        <img src="/mudra2.png" alt="" />
         <h1 className="text-9xl">Mudra</h1>
         <p className="text-lg">
           The Only DAO / Community product you will need.
@@ -99,7 +99,7 @@ export default function Home() {
               onClick={() => {
                 setHandleModal(false);
                 setUserType({ type: 'none' });
-                router.push('/dashboard');
+                router.push('/tasks');
               }}
             >
               <button className="bg-gradient-to-r from-red-500 to-red-700 active:scale-75 duration-100 ease-out font-bold px-10 text-white py-2 rounded-md">
