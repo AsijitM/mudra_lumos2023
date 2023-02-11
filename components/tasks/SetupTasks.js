@@ -1,7 +1,7 @@
-import { Input } from "antd";
-import React, { useContext, useState } from "react";
+import { Input } from 'antd';
+import React, { useContext, useState } from 'react';
 
-import AvailableTokens from "../AvailableTokens";
+import AvailableTokens from '../AvailableTokens';
 
 const SetupTasks = ({ setActiveTabs }) => {
   const [wtkBal, setWTKBal] = useState(0);
@@ -10,7 +10,7 @@ const SetupTasks = ({ setActiveTabs }) => {
     <div className="w-screen">
       <div className="w-2/3 flex mx-auto m-10 rounded-lg border border-black p-10 bg-white">
         <div className="flex w-1/2 flex-col items-center justify-center space-y-5">
-          <img src={require("../../images/eth-person.png")} alt="" />
+          <img src={require('../../images/eth-person.png')} alt="" />
           <div className="space-y-3">
             <AvailableTokens tokens={wtkBal} />
             <p className="text-center">Running Low on Tokens ?</p>
@@ -20,6 +20,12 @@ const SetupTasks = ({ setActiveTabs }) => {
                 arrow={0}
                 onClick={() => setActiveTabs(2)}
               /> */}
+              <button
+                className="bg-[#6200C5] px-4 py-2 text-white rounded-lg transition active:scale-75 "
+                onClick={() => setActiveTabs(2)}
+              >
+                Buy Now
+              </button>
             </div>
           </div>
         </div>
@@ -28,8 +34,8 @@ const SetupTasks = ({ setActiveTabs }) => {
             <p className="text-xl">Enter Task Name</p>
             <Input
               style={{
-                width: "25rem",
-                border: "2px solid #D1B0FC",
+                width: '25rem',
+                border: '2px solid #D1B0FC',
               }}
             />
           </div>
@@ -38,11 +44,11 @@ const SetupTasks = ({ setActiveTabs }) => {
             <textarea
               className="rounded-lg p-3"
               style={{
-                resize: "none",
-                outline: "none",
-                width: "25rem",
-                height: "8rem",
-                border: "2px solid #D1B0FC",
+                resize: 'none',
+                outline: 'none',
+                width: '25rem',
+                height: '8rem',
+                border: '2px solid #D1B0FC',
               }}
             />
           </div>
@@ -50,8 +56,8 @@ const SetupTasks = ({ setActiveTabs }) => {
             <p className="text-xl">Bounty Offered</p>
             <Input
               style={{
-                width: "25rem",
-                border: "2px solid #D1B0FC",
+                width: '25rem',
+                border: '2px solid #D1B0FC',
               }}
             />
           </div>
