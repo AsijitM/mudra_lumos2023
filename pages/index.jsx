@@ -19,7 +19,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="h-[calc(100vh-71px)] flex flex-col items-center justify-center space-y-3 text-white">
-        <img src="/mudra2.png" alt="" />
+        <img src="/mudra3.png" alt="" />
         <h1 className="text-9xl">Mudra</h1>
         <p className="text-lg">
           The Only DAO / Community product you will need.
