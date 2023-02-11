@@ -1,13 +1,13 @@
-import { Modal } from "antd";
-import Head from "next/head";
-import Image from "next/image";
-import { useRouter } from "next/router";
-import { useState } from "react";
-import { RxCrossCircled } from "react-icons/rx";
+import { Modal } from 'antd';
+import Head from 'next/head';
+import Image from 'next/image';
+import { useRouter } from 'next/router';
+import { useState } from 'react';
+import { RxCrossCircled } from 'react-icons/rx';
 
 export default function Home() {
   const [handleModal, setHandleModal] = useState(false);
-  const [userType, setUserType] = useState({ type: "none" });
+  const [userType, setUserType] = useState({ type: 'none' });
 
   const router = useRouter();
   return (
@@ -34,12 +34,12 @@ export default function Home() {
         <Modal
           open={handleModal}
           closable={false}
-          okButtonProps={{ style: { display: "none" } }}
-          cancelButtonProps={{ style: { display: "none" } }}
+          okButtonProps={{ style: { display: 'none' } }}
+          cancelButtonProps={{ style: { display: 'none' } }}
           width={800}
           onOk={() => setHandleModal(false)}
           onCancel={() => setHandleModal(false)}
-          style={{ backgroundColor: "#1B092C", padding: 0 }}
+          style={{ backgroundColor: '#1B092C', padding: 0 }}
         >
           <div className="flex justify-between items-center bg-white/30">
             <p className="font-bold text-xl">Getting Started</p>
@@ -60,34 +60,34 @@ export default function Home() {
             </div>
             <div className="flex justify-evenly mt-20 mb-10">
               <div
-                onClick={() => setUserType({ type: "admin" })}
+                onClick={() => setUserType({ type: 'admin' })}
                 className={`p-10 bg-black/20 rounded-md ${
-                  userType.type === "admin" &&
-                  "border-4 shadow-2xl shadow-black border-black"
+                  userType.type === 'admin' &&
+                  'border-4 shadow-2xl shadow-black border-black'
                 } cursor-pointer`}
               >
-                <Image src={require("../images/admin.png")} />
+                <img src={'/admin.png'} />
                 <p
-                  className={`px-4 ${
-                    userType.type === "admin" ? "bg-green-600" : "bg-blue-700"
-                  } inline py-2 rounded-full  text-white text-center text-sm font-semibold`}
+                  className={`px-4 my-5 ${
+                    userType.type === 'admin' ? 'bg-green-600' : 'bg-blue-700'
+                  } inline py-2  rounded-full  text-white text-center text-sm font-semibold`}
                 >
                   Admin
                 </p>
               </div>
               <div
-                onClick={() => setUserType({ type: "contributor" })}
+                onClick={() => setUserType({ type: 'contributor' })}
                 className={`p-10 bg-black/20 rounded-md ${
-                  userType.type === "contributor" &&
-                  "border-4 shadow-2xl shadow-black border-black"
+                  userType.type === 'contributor' &&
+                  'border-4 shadow-2xl shadow-black border-black'
                 } cursor-pointer`}
               >
-                <Image src={require("../images/contributor.png")} />
+                <img src={'./contributor.png'} />
                 <p
-                  className={`px-4  inline py-2 rounded-full  ${
-                    userType.type === "contributor"
-                      ? "bg-green-600"
-                      : "bg-blue-700"
+                  className={`px-4 inline py-2 rounded-full  ${
+                    userType.type === 'contributor'
+                      ? 'bg-green-600'
+                      : 'bg-blue-700'
                   } text-white text-center  text-sm font-semibold`}
                 >
                   Contributor
@@ -98,8 +98,8 @@ export default function Home() {
               className="flex justify-center"
               onClick={() => {
                 setHandleModal(false);
-                setUserType({ type: "none" });
-                router.push("/dashboard");
+                setUserType({ type: 'none' });
+                router.push('/dashboard');
               }}
             >
               <button className="bg-gradient-to-r from-red-500 to-red-700 active:scale-75 duration-100 ease-out font-bold px-10 text-white py-2 rounded-md">
