@@ -1,7 +1,7 @@
-import HeaderTabs from "@/components/merch/HeaderTabs";
-import React, { useEffect, useState } from "react";
-import { dummyMerch as data } from "@/dummyMerch";
-import Image from "next/image";
+import HeaderTabs from '@/components/merch/HeaderTabs';
+import React, { useEffect, useState } from 'react';
+import { dummyMerch as data } from '@/dummyMerch';
+import Image from 'next/image';
 
 const Merch = () => {
   const [activeTabs, setActiveTabs] = useState(1);
@@ -9,15 +9,15 @@ const Merch = () => {
   var dummyMerch = [];
 
   if (activeTabs === 1) {
-    dummyMerch = data.filter((item) => item.category[0] === "Merch");
+    dummyMerch = data.filter((item) => item.category[0] === 'Merch');
   }
 
   if (activeTabs === 2) {
-    dummyMerch = data.filter((item) => item.category[0] === "Accessories");
+    dummyMerch = data.filter((item) => item.category[0] === 'Accessories');
   }
 
   if (activeTabs === 3) {
-    dummyMerch = data.filter((item) => item.category[0] === "NFT Tickets");
+    dummyMerch = data.filter((item) => item.category[0] === 'NFT Tickets');
   }
 
   return (
@@ -28,7 +28,7 @@ const Merch = () => {
         {dummyMerch?.map((item, key) => {
           return (
             <div className="bg-[#EAD4F4] p-5 rounded-sm">
-              <Image
+              <img
                 className="object-cover object-center h-72 border border-black"
                 src={item.image}
               />

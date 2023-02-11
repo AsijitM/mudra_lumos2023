@@ -55,7 +55,7 @@ const BuyTokens = () => {
           />
           <p className="text-center mt-5 font-semibold flex justify-evenly px-10 text-2xl">
             <span>{tokens || 1} $MUD</span> <span>=</span>{" "}
-            <span>{tokens ? (tokens * 1.2).toFixed(3) : 1} MATIC</span>
+            <span>{tokens ? (tokens * 1.2).toFixed(3) : 1} USD</span>
           </p>
 
           <div className="w-[12rem] mx-auto my-5">
