@@ -9,13 +9,13 @@ import { providers } from 'ethers';
 const SendNft = () => {
   const handler = async () => {
     const gasPrice = await providers.getGasPrice();
-    // const config = await prepareWriteContract({
-    //   address: routerNft_Address,
-    //   abi: routerNft_ABI,
-    //   functionName: transferCrossChain,
-    //   args: [0, 43113, 10000000, gasPrice],
-    // });
-    // const data = await writeContract(config);
+    const config = await prepareWriteContract({
+      address: routerNft_Address,
+      abi: routerNft_ABI,
+      functionName: transferCrossChain,
+      args: [0, 43113, 10000000, gasPrice],
+    });
+    const data = await writeContract(config);
     console.log(gasPrice);
   };
   const router = useRouter();
